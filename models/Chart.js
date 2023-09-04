@@ -20,6 +20,15 @@ const chartSchema = new mongoose.Schema({
   data: {
     type: Array,
   },
+  customization: {
+    type: Object,
+  },
+  chartType: {
+    type: String,
+  },
+  hideCustomization: {
+    type: Boolean,
+  },
 });
 
 module.exports = mongoose.model("Chart", chartSchema);
