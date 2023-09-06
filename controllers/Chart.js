@@ -59,7 +59,8 @@ exports.getChart = async (req, res) => {
 
 exports.updateChart = async (req, res) => {
   try {
-    const { chartId, customization, chartType, hideCustomization } = req.body;
+    const { chartId, customization, chartType, hideCustomization, chartName } =
+      req.body;
     const chart = await Chart.findById(chartId);
     if (!chart) {
       return res.status(404).json({
@@ -70,6 +71,7 @@ exports.updateChart = async (req, res) => {
     chart.customization = customization;
     chart.chartType = chartType;
     chart.hideCustomization = hideCustomization;
+    chart.name = chartName;
     await chart.save();
     res.status(200).json({
       success: true,
