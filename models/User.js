@@ -17,12 +17,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     select: false,
   },
-  charts: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Chart",
-    },
-  ],
 });
 
 userSchema.pre("save", async function (next) {

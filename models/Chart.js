@@ -5,10 +5,6 @@ const chartSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  name: {
-    type: String,
-    default: "Untitled chart",
-  },
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -20,14 +16,8 @@ const chartSchema = new mongoose.Schema({
   data: {
     type: Array,
   },
-  customization: {
+  graph: {
     type: Object,
-  },
-  chartType: {
-    type: String,
-  },
-  hideCustomization: {
-    type: Boolean,
   },
 });
 

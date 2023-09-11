@@ -59,19 +59,16 @@ exports.getChart = async (req, res) => {
 
 exports.updateChart = async (req, res) => {
   try {
-    const { chartId, customization, chartType, hideCustomization, chartName } =
-      req.body;
-    const chart = await Chart.findById(chartId);
+    const { graph } = req.body;
+    console.log("graph", graph);
+    const chart = await Chart.findById(graph.chartId);
     if (!chart) {
       return res.status(404).json({
         success: false,
         message: "Chart not found",
       });
     }
-    chart.customization = customization;
-    chart.chartType = chartType;
-    chart.hideCustomization = hideCustomization;
-    chart.name = chartName;
+    chart.graph = graph;
     await chart.save();
     res.status(200).json({
       success: true,
